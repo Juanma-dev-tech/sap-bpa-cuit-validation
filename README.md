@@ -1,3 +1,7 @@
+![Brand](https://img.shields.io/badge/Juan%20Manuel%20Labs-Automation%20Projects-0FAAFF?style=for-the-badge&logo=github&logoColor=white)
+![SAP BPA](https://img.shields.io/badge/SAP%20BPA-Mass%20Automation-0FAAFF?style=flat&logo=sap&logoColor=white)
+![Tech Stack](https://img.shields.io/badge/Tech%20Stack-BPA%20%7C%20Python%20%7C%20Excel-001F5B?style=flat-square&logo=sap&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
 
 # 📘 Validacion Masiva de CUIT con SAP Build Process Automation + Python
 
