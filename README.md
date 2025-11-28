@@ -23,7 +23,7 @@ Este caso demuestra una arquitectura hibrida completa BPA + Python que puede apl
 - [Buenas Practicas](#buenas-practicas)
 
 ---
-
+<a id="descripcion-general"></a>
 # 📝 Descripcion General
 
 La automatizacion realiza:
