@@ -1,41 +1,39 @@
 
-# Validación Masiva de CUIT con SAP Build Process Automation + Python
+# 📘 Validacion Masiva de CUIT con SAP Build Process Automation + Python
 
-Automatización desarrollada como caso real de uso en **SAP Build Process Automation (BPA)**, integrando lectura de Excel, construcción dinámica de archivos, ejecución de un script de **Python**, análisis masivo de información del padrón y envío automático de resultados por correo electrónico.
+Automatizacion desarrollada como caso real de uso en **SAP Build Process Automation (BPA)**, integrando lectura de Excel, construccion dinamica de archivos, ejecucion de un script de **Python**, analisis masivo de informacion del padron y envio automatico de resultados por correo electronico.
 
-Este caso demuestra una arquitectura completa de automatización híbrida BPA + Python que puede aplicarse a validaciones masivas, transformaciones de datos, procesos batch y automatización asistida.
+Este caso demuestra una arquitectura hibrida completa BPA + Python que puede aplicarse a validaciones masivas, transformaciones de datos, procesos batch y automatizacion asistida.
 
 ---
 
-# 📘 Contenido
+# 📚 Contenido
 
-- [Descripción General](#descripción-general)
+- [Descripcion General](#descripcion-general)
 - [Arquitectura del Proceso](#arquitectura-del-proceso)
 - [Workflow Completo](#workflow-completo)
 - [Lectura del Excel](#lectura-del-excel)
-- [Iteración con For Each](#iteración-con-for-each)
-- [Generación del Archivo de Entrada](#generación-del-archivo-de-entrada)
-- [Ejecución del Script Python](#ejecución-del-script-python)
+- [Iteracion con For Each](#iteracion-con-for-each)
+- [Generacion del Archivo de Entrada](#generacion-del-archivo-de-entrada)
+- [Ejecucion del Script Python](#ejecucion-del-script-python)
 - [Archivos de Entrada y Salida](#archivos-de-entrada-y-salida)
-- [Logs de Ejecución](#logs-de-ejecución)
-- [Email Automático](#email-automático)
-- [Snippets Técnicos](#snippets-técnicos)
-- [Buenas Prácticas](#buenas-prácticas)
+- [Logs de Ejecucion](#logs-de-ejecucion)
+- [Email Automatico](#email-automatico)
+- [Snippets Tecnicos](#snippets-tecnicos)
+- [Buenas Practicas](#buenas-practicas)
 
 ---
 
-# 📄 Descripción General
+# 📝 Descripcion General
 
-La automatización realiza:
+La automatizacion realiza:
 
-1. Lectura dinámica de un archivo Excel que contiene CUITs y razones sociales.
-2. Determinación automática del rango real a procesar.
-3. Construcción de un archivo `cuit_input.txt` usando lógica de concatenación.
-4. Ejecución de un script Python (`consulta_padron_masivo.py`) que consulta el padrón.
+1. Lectura dinamica de un archivo Excel que contiene CUITs y razones sociales.
+2. Determinacion automatica del rango real a procesar.
+3. Construccion de un archivo `cuit_input.txt`.
+4. Ejecucion de un script Python (`consulta_padron_masivo.py`).
 5. Lectura del archivo resultante generado por Python.
-6. Envío de un correo electrónico con una tabla HTML consolidada.
-
-Este flujo permite procesar cientos o miles de CUITs de manera masiva y eficiente.
+6. Envio de un correo electronico con una tabla HTML consolidada.
 
 ---
 
@@ -51,15 +49,11 @@ Excel → BPA (Read + For Each + Append File) → Python Script → BPA (Read Fi
 
 ![Workflow Overview](docs/workflow-overview.png)
 
-Diagrama general del proceso en SAP Build Process Automation.
-
 ---
 
 # 📥 Lectura del Excel
 
-## **1. Get Row From Data**
-
-Determina la última fila con datos para crear un rango dinámico.
+## Get Row From Data
 
 ![Get Row From Data](docs/get-row-from-data.png)
 
@@ -69,13 +63,11 @@ Determina la última fila con datos para crear un rango dinámico.
 
 ---
 
-## **2. Get Values (Cells)**
-
-Extrae CUIT y Razón Social en base al rango dinámico.
+## Get Values (Cells)
 
 ![Get Values](docs/get-values-cells.png)
 
-La expresión del rango:
+Expresion utilizada:
 
 ```txt
 "A2:B" + Step4.rowIndex
@@ -83,67 +75,55 @@ La expresión del rango:
 
 ---
 
-# 🔄 Iteración con For Each
+# 🔄 Iteracion con For Each
 
 ![For Each + Append File](docs/foreach-details.png)
 
-- Lista utilizada: `returnedValues`
-- Parámetro del loop: `fila`
-
-El proceso recorre cada fila del Excel.
+- Lista iterada: `returnedValues`
+- Parametro del loop: `fila`
 
 ---
 
-# 📄 Generación del Archivo de Entrada
+# 📄 Generacion del Archivo de Entrada
 
-Dentro del For Each se construye el archivo `cuit_input.txt`.
-
-Expresión utilizada:
+Expresion utilizada para construir cada linea:
 
 ```txt
 Step7.fila[0].split("").join('') + ";" + Step7.fila[1].split("").join('') + "\n"
 ```
 
-Esta expresión genera una línea por registro.
-
-Archivo resultante:
+Ejemplo de salida:
 
 ```
 30525390086;COCA COLA FEMSA DE BUENOS AIRES S.A.
 30714928836;GAJATE S.A.
-...
 ```
 
 ---
 
-# 🐍 Ejecución del Script Python
+# 🐍 Ejecucion del Script Python
 
 ![Execute Command](docs/execute-command.png)
 
-La automatización ejecuta el script Python con parámetros:
-
-```
+```txt
 command: C:\Users\juan.yniguez\AppData\Local\Programs\Python\Python314\python.exe
 param: "C:\BPA\padron\consulta_padron_masivo.py"
 dir: C:\BPA\padron
 ```
 
-El script genera resultados en formato JSON y HTML.
-
 ---
 
 # 📁 Archivos de Entrada y Salida
 
-## **Input Folder**
+## Input Folder
 
 ![Input Folder](docs/input-folder.png)
 
-Ubicación esperada:  
-`C:\BPA\pendientes\excel_ejemplo.xlsx`
+Ubicacion: `C:\BPA\pendientes\excel_ejemplo.xlsx`
 
 ---
 
-## **Output Folder**
+## Output Folder
 
 ![Output Folder](docs/output-folder.png)
 
@@ -156,47 +136,47 @@ Archivos generados:
 
 ---
 
-# 📊 Logs de Ejecución
+# 📊 Logs de Ejecucion
 
 ![Run Logs](docs/run-logs.png)
 
-Aquí se observa:
+Muestra:
 
-- Iteraciones FOReach (ej: 5 registros procesados)
-- Una sola ejecución del comando Python
-- Envío de correo automático
+- Iteraciones del For Each
+- Una sola ejecucion del comando Python
+- Envio automatico del email
 
 ---
 
-# 📧 Email Automático
+# 📧 Email Automatico
 
 ![Email Sent](docs/email-sent-example.png)
 
-El flujo envía un correo HTML con:
+Incluye tabla HTML con:
 
-- CUIT
-- Razón social Excel
-- Razón social del padrón
-- Indicador de coincidencia
-- Mensaje de error cuando aplica
+- CUIT  
+- Razon Social Excel  
+- Razon Social Padron  
+- Coincidencia  
+- Error cuando aplica  
 
 ---
 
-# 🧩 Snippets Técnicos
+# 🧩 Snippets Tecnicos
 
-## **For Each – Content Expression**
+## For Each – Content Expression
 
 ```txt
 Step7.fila[0].split("").join('') + ";" + Step7.fila[1].split("").join('') + "\n"
 ```
 
-## **Get Values – Range Expression**
+## Get Values – Range Expression
 
 ```txt
 "A2:B" + Step4.rowIndex
 ```
 
-## **Execute Command**
+## Execute Command
 
 ```txt
 command: C:\Users\juan.yniguez\AppData\Local\Programs\Python\Python314\python.exe
@@ -206,25 +186,14 @@ dir: C:\BPA\padron
 
 ---
 
-# 🧠 Buenas Prácticas
+# 🧠 Buenas Practicas
 
-- Usar rangos dinámicos al leer Excel.
-- Construir el archivo TXT una sola vez fuera del script.
-- Evitar operar Python dentro del For Each.
-- Estandarizar encoding UTF-8.
-- Mantener BPA y Python desacoplados mediante intercambio de archivos.
-- Documentar rutas, carpetas y salidas de forma clara.
-
----
-
-# ✔️ Caso de Uso Completo
-
-Este repositorio está listo para servir como:
-
-- Ejemplo técnico en tu portfolio  
-- Caso de uso real en entrevistas  
-- Demostración de automatización híbrida BPA + Python  
-- Material de capacitación interna  
+- Usar rangos dinamicos para Excel.
+- No ejecutar Python dentro del For Each.
+- Generar el archivo TXT de entrada fuera del script.
+- Mantener BPA y Python desacoplados mediante archivos.
+- Utilizar UTF-8 para evitar caracteres inesperados.
+- Documentar claramente rutas de entrada y salida.
 
 ---
 
