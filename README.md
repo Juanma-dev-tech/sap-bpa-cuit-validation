@@ -36,7 +36,7 @@ La automatizacion realiza:
 6. Envio de un correo electronico con una tabla HTML consolidada.
 
 ---
-
+<a id="arquitectura-del-proceso"></a>
 # 🏗️ Arquitectura del Proceso
 
 ```
@@ -44,13 +44,13 @@ Excel → BPA (Read + For Each + Append File) → Python Script → BPA (Read Fi
 ```
 
 ---
-
+<a id="workflow-completo"></a>
 # 🔁 Workflow Completo
 
 ![Workflow Overview](docs/workflow-overview.png)
 
 ---
-
+<a id="lectura-del-excel"></a>
 # 📥 Lectura del Excel
 
 ## Get Row From Data
@@ -74,7 +74,7 @@ Expresion utilizada:
 ```
 
 ---
-
+<a id="iteracion-con-for-each"></a>
 # 🔄 Iteracion con For Each
 
 ![For Each + Append File](docs/foreach-details.png)
@@ -83,7 +83,7 @@ Expresion utilizada:
 - Parametro del loop: `fila`
 
 ---
-
+<a id="generacion-del-archivo-de-entrada"></a>
 # 📄 Generacion del Archivo de Entrada
 
 Expresion utilizada para construir cada linea:
@@ -100,7 +100,7 @@ Ejemplo de salida:
 ```
 
 ---
-
+<a id="ejecucion-del-script-python"></a>
 # 🐍 Ejecucion del Script Python
 
 ![Execute Command](docs/execute-command.png)
@@ -112,7 +112,7 @@ dir: C:\BPA\padron
 ```
 
 ---
-
+<a id="archivos-de-entrada-y-salida"></a>
 # 📁 Archivos de Entrada y Salida
 
 ## Input Folder
@@ -135,7 +135,7 @@ Archivos generados:
 - `resultado.json`
 
 ---
-
+<a id="logs-de-ejecucion"></a>
 # 📊 Logs de Ejecucion
 
 ![Run Logs](docs/run-logs.png)
@@ -147,7 +147,7 @@ Muestra:
 - Envio automatico del email
 
 ---
-
+<a id="email-automatico"></a>
 # 📧 Email Automatico
 
 ![Email Sent](docs/email-sent-example.png)
@@ -161,7 +161,7 @@ Incluye tabla HTML con:
 - Error cuando aplica  
 
 ---
-
+<a id="snippets-tecnicos"></a>
 # 🧩 Snippets Tecnicos
 
 ## For Each – Content Expression
@@ -185,7 +185,7 @@ dir: C:\BPA\padron
 ```
 
 ---
-
+<a id="buenas-practicas"></a>
 # 🧠 Buenas Practicas
 
 - Usar rangos dinamicos para Excel.
