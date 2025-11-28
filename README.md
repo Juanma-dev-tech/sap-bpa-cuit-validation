@@ -49,7 +49,7 @@ Excel → BPA (Read + For Each + Append File) → Python Script → BPA (Read Fi
 
 # 🔁 Workflow Completo
 
-![Workflow Overview](workflow-overview.png)
+![Workflow Overview](docs/workflow-overview.png)
 
 Diagrama general del proceso en SAP Build Process Automation.
 
@@ -61,7 +61,7 @@ Diagrama general del proceso en SAP Build Process Automation.
 
 Determina la última fila con datos para crear un rango dinámico.
 
-![Get Row From Data](get-row-from-data.png)
+![Get Row From Data](docs/get-row-from-data.png)
 
 - `referenceCell: A1`
 - `verticalDirection: xlDown`
@@ -73,7 +73,7 @@ Determina la última fila con datos para crear un rango dinámico.
 
 Extrae CUIT y Razón Social en base al rango dinámico.
 
-![Get Values](get-values-cells.png)
+![Get Values](docs/get-values-cells.png)
 
 La expresión del rango:
 
@@ -85,7 +85,7 @@ La expresión del rango:
 
 # 🔄 Iteración con For Each
 
-![For Each + Append File](foreach-details.png)
+![For Each + Append File](docs/foreach-details.png)
 
 - Lista utilizada: `returnedValues`
 - Parámetro del loop: `fila`
@@ -118,7 +118,7 @@ Archivo resultante:
 
 # 🐍 Ejecución del Script Python
 
-![Execute Command](execute-command.png)
+![Execute Command](docs/execute-command.png)
 
 La automatización ejecuta el script Python con parámetros:
 
@@ -136,7 +136,7 @@ El script genera resultados en formato JSON y HTML.
 
 ## **Input Folder**
 
-![Input Folder](input-folder.png)
+![Input Folder](docs/input-folder.png)
 
 Ubicación esperada:  
 `C:\BPA\pendientes\excel_ejemplo.xlsx`
@@ -145,7 +145,7 @@ Ubicación esperada:
 
 ## **Output Folder**
 
-![Output Folder](output-folder.png)
+![Output Folder](docs/output-folder.png)
 
 Archivos generados:
 
@@ -158,7 +158,7 @@ Archivos generados:
 
 # 📊 Logs de Ejecución
 
-![Run Logs](run-logs.png)
+![Run Logs](docs/run-logs.png)
 
 Aquí se observa:
 
@@ -170,7 +170,7 @@ Aquí se observa:
 
 # 📧 Email Automático
 
-![Email Sent](email-sent-example.png)
+![Email Sent](docs/email-sent-example.png)
 
 El flujo envía un correo HTML con:
 
